@@ -5,11 +5,23 @@ abstract class ProjectStrings {
 
   static const String titleInfo = 'Information';
 
+  static const String appBarAdd = 'task';
+
+  static const String appBarClose = 'Close';
+
   static const String btnHide = 'Hide completed';
+
+  static const String btnShow = 'Show completed';
 
   static const String btnDone = 'Done';
 
   static const String btnInfo = 'Got it!';
+
+  static const String infoName = 'Name';
+
+  static const String infoTime = 'Time';
+
+  static const String infoDate = 'Date';
 
   static const String noTasks = 'Looks like there is no tasks yet! Go ahead and push a plus button below';
 
