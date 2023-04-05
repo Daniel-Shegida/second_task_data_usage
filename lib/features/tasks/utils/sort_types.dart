@@ -1,6 +1,11 @@
-/// enum для видов валют и их названий
+/// enum для видов сортировок
 enum SortTypes {
-  azSort(),
-  zaSort(),
-  dateSort();
+  azSort(0),
+  zaSort(1),
+  dateSort(2);
+
+  const SortTypes(this.sortIndex);
+
+  final int sortIndex;
+
 }

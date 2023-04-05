@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:second_task_data_usage/assets/colors/project_colors.dart';
 import 'package:second_task_data_usage/assets/text_styles/project_styles.dart';
+import 'package:second_task_data_usage/features/tasks/utils/dates_convertor.dart';
 
 class CheckBoxWidget extends StatelessWidget {
   const CheckBoxWidget(
@@ -39,7 +40,7 @@ class CheckBoxWidget extends StatelessWidget {
       ),
       subtitle: Opacity(
         opacity: value ? 0.3 : 1,
-        child: Text(_formatDate(date),
+        child: Text(DatesConvertor.convertDateToMinuteYear(date),
             style: value
                 ? ProjectStyles.italicActive13OpenSans
                     .copyWith(decoration: TextDecoration.lineThrough)
@@ -48,9 +49,5 @@ class CheckBoxWidget extends StatelessWidget {
       value: value,
       onChanged: onChanged,
     );
-  }
-
-  String _formatDate(DateTime date) {
-    return '${date.day}.${date.month}.${date.year} ${date.hour}:${date.minute}';
   }
 }

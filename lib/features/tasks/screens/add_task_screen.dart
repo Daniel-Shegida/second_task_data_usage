@@ -1,19 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg_icons/flutter_svg_icons.dart';
 import 'package:second_task_data_usage/assets/colors/project_colors.dart';
-import 'package:second_task_data_usage/assets/icons/project_icons.dart';
 import 'package:second_task_data_usage/assets/strings/projects_strings.dart';
 import 'package:second_task_data_usage/assets/text_styles/project_styles.dart';
 import 'package:second_task_data_usage/features/tasks/service/task_bloc.dart';
 import 'package:second_task_data_usage/features/tasks/service/task_event.dart';
-import 'package:second_task_data_usage/features/tasks/utils/classes.dart';
 import 'package:second_task_data_usage/features/tasks/utils/dates_convertor.dart';
+import 'package:second_task_data_usage/features/tasks/utils/task.dart';
 import 'package:second_task_data_usage/features/tasks/widgets/cupertino_like_app_bar.dart';
 import 'package:second_task_data_usage/ui_kit/rounded_btn_widget.dart';
 import 'package:second_task_data_usage/ui_kit/title_with_text_btn_widget.dart';
+import 'package:uuid/uuid.dart';
 
 class AddTaskScreen extends StatefulWidget {
   const AddTaskScreen({Key? key}) : super(key: key);
@@ -26,6 +24,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   late TextEditingController _textEditingController;
   TimeOfDay _currentTime = TimeOfDay.now();
   DateTime _currentDate = DateTime.now();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -47,37 +46,51 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
         padding: EdgeInsets.only(left: 20.0.w, right: 14.w, top: 0.h),
         child: Column(
           children: [
-            // SizedBox(height: 555,),
             const TextTitleWithBtn(
               title: ProjectStrings.titleAdd,
               isBtn: false,
             ),
-            _TextInputRawWidget(
-              textEditingController: _textEditingController,
+            Form(
+              key: _formKey,
+              child: _TextInputRawWidget(
+                textEditingController: _textEditingController,
+              ),
             ),
             SizedBox(
               height: 30.h,
             ),
-            _TimeInputRawWidget(currentTime: _currentTime, onTap: _changeTimeByDialog,),
+            _TimeInputRawWidget(
+              currentTime: _currentTime,
+              onTap: _changeTimeByDialog,
+            ),
             SizedBox(
               height: 28.h,
             ),
-            _DateInputRawWidget(currentDate: _currentDate, onTap: _changeDateByDialog,),
+            _DateInputRawWidget(
+              currentDate: _currentDate,
+              onTap: _changeDateByDialog,
+            ),
             SizedBox(
               height: 57.h,
             ),
             RoundedBtnWidget(
               bntText: ProjectStrings.btnDone,
               onPressed: () {
-                context.read<TaskBloc>().add(
-                      SaveTaskEvent(
-                        task: Task(
+                if (_formKey.currentState!.validate()) {
+                  context.read<TaskBloc>().add(
+                        SaveTaskEvent(
+                          task: Task(
+                            id: const Uuid().v1(),
                             name: _textEditingController.text,
-                            time: _currentTime,
-                            date: _currentDate),
-                      ),
-                    );
-                Navigator.pop(context);
+                            date: _currentDate.copyWith(
+                              hour: _currentTime.hour,
+                              minute: _currentTime.minute,
+                            ),
+                          ),
+                        ),
+                      );
+                  Navigator.pop(context);
+                }
               },
             ),
           ],
@@ -122,7 +135,13 @@ class _TextInputRawWidget extends StatelessWidget {
           width: 11.w,
         ),
         Expanded(
-            child: TextField(
+            child: TextFormField(
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter some text';
+            }
+            return null;
+          },
           controller: textEditingController,
           decoration: const InputDecoration(hintText: ProjectStrings.fishShort),
         )),
@@ -161,13 +180,15 @@ class _TimeInputRawWidget extends StatelessWidget {
 }
 
 class _DateInputRawWidget extends StatelessWidget {
-  const _DateInputRawWidget({required this.currentDate, required this.onTap, Key? key}) : super(key: key);
+  const _DateInputRawWidget(
+      {required this.currentDate, required this.onTap, Key? key})
+      : super(key: key);
   final DateTime currentDate;
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return             Row(
+    return Row(
       children: [
         Text(
           ProjectStrings.infoDate,
@@ -217,7 +238,7 @@ class DateInfoWidget extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.all(8.0.h),
         child: Text(
-          DatesConvertor.convertDateTime(date),
+          DatesConvertor.convertDateTimeToDayYear(date),
           style: ProjectStyles.regularBlack22OpenSans,
         ),
       ),
