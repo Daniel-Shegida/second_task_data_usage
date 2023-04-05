@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "265484207469",
+    "project_id": "secondtaskdatausage",
+    "storage_bucket": "secondtaskdatausage.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:265484207469:android:ea2bfcaf8d47c817548664",
+        "android_client_info": {
+          "package_name": "com.example.second_task_data_usage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "265484207469-l2itbg9ub0n1m0vilh01npti09ugdvhf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7aM45CLo_1-yd03XT3dlApFSWvZa7Kkg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "265484207469-l2itbg9ub0n1m0vilh01npti09ugdvhf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
