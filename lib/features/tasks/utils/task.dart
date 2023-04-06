@@ -23,4 +23,17 @@ class Task {
       isCompleted: isCompleted ?? this.isCompleted,
     );
   }
+
+  Map<String, Object?> toJson() => {
+    'id' : id,
+        'name': name,
+        'date': date,
+        'isCompleted': isCompleted,
+      };
+
+  static Task fromJson(Map<String, dynamic> json) => Task(
+      id: json['id'],
+      name: json['name'],
+      date: json['date'].toDate(),
+      isCompleted: json['isCompleted']);
 }
