@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:second_task_data_usage/features/tasks/service/rep/drift_task_repository.dart';
+import 'package:second_task_data_usage/features/tasks/service/rep/firestore_task_repository/firestore_task_repository.dart';
 import 'package:second_task_data_usage/features/tasks/service/rep/i_task_repository.dart';
 import 'package:second_task_data_usage/features/tasks/service/task_event.dart';
 import 'package:second_task_data_usage/features/tasks/service/task_state.dart';
@@ -7,7 +7,7 @@ import 'package:second_task_data_usage/features/tasks/utils/sort_types.dart';
 import 'package:second_task_data_usage/features/tasks/utils/task.dart';
 
 class TaskBloc extends Bloc<TaskEvent, TaskState> {
-  late final ITaskRepository _rep = DriftTaskRepository();
+  late final ITaskRepository _rep = FirestoreTaskRepository();
 
   bool isShowingCompleted = true;
   SortTypes _currentType = SortTypes.azSort;
@@ -33,7 +33,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
 
     on<ChangeCompletionTaskEvent>((event, emit) async {
       changeCompleteness(event.task);
-      _rep.changeCompletenessOfTask(event.task);
+      _rep.changeCompletenessOfTask(event.task.copyWith(isCompleted: !event.task.isCompleted));
       showTasks();
     });
 
