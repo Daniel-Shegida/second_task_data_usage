@@ -29,15 +29,17 @@ class TasksScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TextTitleWithBtn(
-                title: ProjectStrings.titleList,
-                isBtn: true,
-                onPressed: () {
-                  context.read<TaskBloc>().add(
-                        FilterEvent(),
-                      );
-                },
-              ),
+              BlocBuilder<TaskBloc, TaskState>(builder: (context, state) {
+                return TextTitleWithBtn(
+                  title: ProjectStrings.titleList,
+                  isBtn: state is GetTasksState,
+                  onPressed: () {
+                    context.read<TaskBloc>().add(
+                          FilterEvent(),
+                        );
+                  },
+                );
+              }),
               BlocBuilder<TaskBloc, TaskState>(builder: (context, state) {
                 if (state is GetTasksState) {
                   return _TasksListOfTasksWidget(
@@ -231,8 +233,6 @@ class _TasksFloatingButtons extends StatelessWidget {
     );
   }
 }
-
-
 
 class _LoadingWidget extends StatelessWidget {
   const _LoadingWidget({Key? key}) : super(key: key);
