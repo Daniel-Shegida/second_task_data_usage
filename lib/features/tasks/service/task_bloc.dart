@@ -1,5 +1,6 @@
+// ignore_for_file: invalid_use_of_visible_for_testing_member
+
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:second_task_data_usage/features/tasks/service/rep/firestore_task_repository/firestore_task_repository.dart';
 import 'package:second_task_data_usage/features/tasks/service/rep/i_task_repository.dart';
 import 'package:second_task_data_usage/features/tasks/service/task_event.dart';
 import 'package:second_task_data_usage/features/tasks/service/task_state.dart';
@@ -7,58 +8,59 @@ import 'package:second_task_data_usage/features/tasks/utils/sort_types.dart';
 import 'package:second_task_data_usage/features/tasks/utils/task.dart';
 
 class TaskBloc extends Bloc<TaskEvent, TaskState> {
-  late final ITaskRepository _rep = FirestoreTaskRepository();
+  final ITaskRepository repository;
 
-  bool isShowingCompleted = true;
+  bool _isShowingCompleted = true;
   SortTypes _currentType = SortTypes.azSort;
-  List<Task> completedTasks = [];
-  List<Task> uncompletedTasks = [];
+  List<Task> _completedTasks = [];
+  List<Task> _uncompletedTasks = [];
 
-  TaskBloc() : super(InitState()) {
+  TaskBloc({required this.repository}) : super(InitState()) {
     on<GetTasksEvent>((event, emit) async {
-      completedTasks = await _rep.getCompletedTasks();
-      uncompletedTasks = await _rep.getUncompletedTasks();
-      showTasks();
+      _completedTasks = await repository.getCompletedTasks();
+      _uncompletedTasks = await repository.getUncompletedTasks();
+      _showTasks();
     });
 
     on<SaveTaskEvent>((event, emit) async {
-      uncompletedTasks.add(event.task);
-      sortListBySortType(_currentType, uncompletedTasks);
-      _rep.saveTask(event.task);
+      _uncompletedTasks.add(event.task);
+      _sortListBySortType(_currentType, _uncompletedTasks);
+      repository.saveTask(event.task);
 
       emit(GetTasksState(
-        tasks: showFiltered(),
+        tasks: _showFiltered(),
       ));
     });
 
     on<ChangeCompletionTaskEvent>((event, emit) async {
-      changeCompleteness(event.task);
-      _rep.changeCompletenessOfTask(event.task.copyWith(isCompleted: !event.task.isCompleted));
-      showTasks();
+      _changeCompleteness(event.task);
+      repository.changeCompletenessOfTask(
+          event.task.copyWith(isCompleted: !event.task.isCompleted));
+      _showTasks();
     });
 
     on<FilterEvent>((event, emit) async {
-      isShowingCompleted = !isShowingCompleted;
+      _isShowingCompleted = !_isShowingCompleted;
 
       emit(
         GetTasksState(
-          tasks: showFiltered(),
+          tasks: _showFiltered(),
         ),
       );
     });
 
     on<SortEvent>((event, emit) async {
       _currentType = event.sortType;
-      sortListBySortType(_currentType, completedTasks);
-      sortListBySortType(_currentType, uncompletedTasks);
-      showTasks();
+      _sortListBySortType(_currentType, _completedTasks);
+      _sortListBySortType(_currentType, _uncompletedTasks);
+      _showTasks();
     });
   }
 
-  void showTasks() {
-    if (completedTasks.isNotEmpty || uncompletedTasks.isNotEmpty) {
+  void _showTasks() {
+    if (_completedTasks.isNotEmpty || _uncompletedTasks.isNotEmpty) {
       emit(GetTasksState(
-        tasks: showFiltered(),
+        tasks: _showFiltered(),
       ));
     } else {
       emit(
@@ -67,61 +69,61 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
     }
   }
 
-  List<Task> showFiltered() {
-    if (isShowingCompleted) {
-      return uncompletedTasks + completedTasks;
+  List<Task> _showFiltered() {
+    if (_isShowingCompleted) {
+      return _uncompletedTasks + _completedTasks;
     } else {
-      return uncompletedTasks;
+      return _uncompletedTasks;
     }
   }
 
-  void sortListBySortType(SortTypes type, List<Task> list) {
+  void _sortListBySortType(SortTypes type, List<Task> list) {
     switch (type) {
       case SortTypes.azSort:
-        sortByAlphabet(list);
+        _sortByAlphabet(list);
         break;
       case SortTypes.zaSort:
-        sortByReversedAlphabet(list);
+        _sortByReversedAlphabet(list);
         break;
       case SortTypes.dateSort:
-        sortByDate(list);
+        _sortByDate(list);
         break;
     }
   }
 
-  void changeCompleteness(Task task) {
+  void _changeCompleteness(Task task) {
     if (task.isCompleted) {
-      uncompletedTasks.add(task.copyWith(
+      _uncompletedTasks.add(task.copyWith(
         isCompleted: false,
       ));
-      sortListBySortType(_currentType, uncompletedTasks);
-      deleteTaskFromList(task.id, completedTasks);
+      _sortListBySortType(_currentType, _uncompletedTasks);
+      _deleteTaskFromList(task.id, _completedTasks);
     } else {
-      completedTasks.add(task.copyWith(
+      _completedTasks.add(task.copyWith(
         isCompleted: true,
       ));
-      sortListBySortType(_currentType, completedTasks);
-      deleteTaskFromList(task.id, uncompletedTasks);
+      _sortListBySortType(_currentType, _completedTasks);
+      _deleteTaskFromList(task.id, _uncompletedTasks);
     }
   }
 
-  void deleteTaskFromList(String id, List<Task> list) {
+  void _deleteTaskFromList(String id, List<Task> list) {
     list.removeWhere((element) => element.id == id);
   }
 
-  void sortByAlphabet(List<Task> tasks) {
+  void _sortByAlphabet(List<Task> tasks) {
     tasks.sort(
       (a, b) => a.name.compareTo(b.name),
     );
   }
 
-  void sortByReversedAlphabet(List<Task> tasks) {
+  void _sortByReversedAlphabet(List<Task> tasks) {
     tasks.sort(
       (a, b) => b.name.compareTo(a.name),
     );
   }
 
-  void sortByDate(List<Task> tasks) {
+  void _sortByDate(List<Task> tasks) {
     tasks.sort(
       (a, b) => a.date.compareTo(
         b.date,
