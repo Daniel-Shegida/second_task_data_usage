@@ -6,7 +6,6 @@ import 'package:second_task_data_usage/assets/colors/project_colors.dart';
 import 'package:second_task_data_usage/assets/icons/project_icons.dart';
 import 'package:second_task_data_usage/assets/strings/projects_strings.dart';
 import 'package:second_task_data_usage/assets/text_styles/project_styles.dart';
-import 'package:second_task_data_usage/features/info/screens/information_screen.dart';
 import 'package:second_task_data_usage/features/tasks/screens/add_task_screen.dart';
 import 'package:second_task_data_usage/features/tasks/service/task_bloc.dart';
 import 'package:second_task_data_usage/features/tasks/service/task_event.dart';
@@ -180,15 +179,10 @@ class _TasksFloatingButtons extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          // SizedBox(width: 40.w,),
           FloatingActionButton(
             heroTag: "noHERO1",
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const InformationScreen()),
-              );
+              Navigator.pushNamed(context, '/infoScreen');
             },
             backgroundColor: ProjectColors.btnColor,
             child: SvgIcon(
@@ -237,6 +231,8 @@ class _TasksFloatingButtons extends StatelessWidget {
     );
   }
 }
+
+
 
 class _LoadingWidget extends StatelessWidget {
   const _LoadingWidget({Key? key}) : super(key: key);
