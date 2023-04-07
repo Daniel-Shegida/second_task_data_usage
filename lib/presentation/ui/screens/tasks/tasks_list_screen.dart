@@ -6,14 +6,14 @@ import 'package:second_task_data_usage/assets/colors/project_colors.dart';
 import 'package:second_task_data_usage/assets/icons/project_icons.dart';
 import 'package:second_task_data_usage/assets/strings/projects_strings.dart';
 import 'package:second_task_data_usage/assets/text_styles/project_styles.dart';
-import 'package:second_task_data_usage/features/tasks/screens/add_task_screen.dart';
-import 'package:second_task_data_usage/features/tasks/service/task_bloc.dart';
-import 'package:second_task_data_usage/features/tasks/service/task_event.dart';
-import 'package:second_task_data_usage/features/tasks/service/task_state.dart';
-import 'package:second_task_data_usage/features/tasks/utils/sort_types.dart';
-import 'package:second_task_data_usage/features/tasks/utils/task.dart';
-import 'package:second_task_data_usage/features/tasks/widgets/check_box_widget.dart';
-import 'package:second_task_data_usage/ui_kit/title_with_text_btn_widget.dart';
+import 'package:second_task_data_usage/presentation/blocs/task_bloc.dart';
+import 'package:second_task_data_usage/presentation/blocs/events/task_event.dart';
+import 'package:second_task_data_usage/presentation/blocs/states/task_state.dart';
+import 'package:second_task_data_usage/domain/models/sort_types.dart';
+import 'package:second_task_data_usage/domain/models/task.dart';
+import 'package:second_task_data_usage/presentation/ui/screens/tasks/add_task_screen.dart';
+import 'package:second_task_data_usage/presentation/ui/widgets/check_box_widget.dart';
+import 'package:second_task_data_usage/presentation/ui/widgets/title_with_text_btn_widget.dart';
 
 class TasksScreen extends StatelessWidget {
   const TasksScreen({Key? key}) : super(key: key);

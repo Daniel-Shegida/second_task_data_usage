@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:second_task_data_usage/features/info/screens/information_screen.dart';
-import 'package:second_task_data_usage/features/tasks/screens/tasks_list_screen.dart';
-import 'package:second_task_data_usage/features/tasks/service/rep/firestore_task_repository/firestore_task_repository.dart';
-import 'package:second_task_data_usage/features/tasks/service/task_bloc.dart';
-import 'package:second_task_data_usage/features/tasks/service/task_event.dart';
+import 'package:second_task_data_usage/data/datasourses/firebase/firebase_remote_data_sourse.dart';
+import 'package:second_task_data_usage/data/repositories/firestore_task_repository.dart';
+import 'package:second_task_data_usage/presentation/blocs/task_bloc.dart';
+import 'package:second_task_data_usage/presentation/blocs/events/task_event.dart';
+import 'package:second_task_data_usage/presentation/ui/screens/info/information_screen.dart';
+import 'package:second_task_data_usage/presentation/ui/screens/tasks/tasks_list_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -14,7 +15,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<TaskBloc>(
       create: (BuildContext _) => TaskBloc(
-        repository: FirestoreTaskRepository(),
+        repository: FirestoreTaskRepository(
+          dataSource: FirebaseRemoteDataSource(),
+        ),
       )..add(GetTasksEvent()),
       child: ScreenUtilInit(
         designSize: const Size(375, 812),

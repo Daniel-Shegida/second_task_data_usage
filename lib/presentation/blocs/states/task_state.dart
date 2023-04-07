@@ -1,4 +1,4 @@
-import 'package:second_task_data_usage/features/tasks/utils/task.dart';
+import 'package:second_task_data_usage/domain/models/task.dart';
 
 abstract class TaskState {}
 

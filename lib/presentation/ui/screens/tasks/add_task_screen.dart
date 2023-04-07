@@ -4,13 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:second_task_data_usage/assets/colors/project_colors.dart';
 import 'package:second_task_data_usage/assets/strings/projects_strings.dart';
 import 'package:second_task_data_usage/assets/text_styles/project_styles.dart';
-import 'package:second_task_data_usage/features/tasks/service/task_bloc.dart';
-import 'package:second_task_data_usage/features/tasks/service/task_event.dart';
-import 'package:second_task_data_usage/features/tasks/utils/dates_convertor.dart';
-import 'package:second_task_data_usage/features/tasks/utils/task.dart';
-import 'package:second_task_data_usage/features/tasks/widgets/cupertino_like_app_bar.dart';
-import 'package:second_task_data_usage/ui_kit/rounded_btn_widget.dart';
-import 'package:second_task_data_usage/ui_kit/title_with_text_btn_widget.dart';
+import 'package:second_task_data_usage/presentation/blocs/task_bloc.dart';
+import 'package:second_task_data_usage/presentation/blocs/events/task_event.dart';
+import 'package:second_task_data_usage/domain/models/task.dart';
+import 'package:second_task_data_usage/presentation/ui/widgets/cupertino_like_app_bar.dart';
+import 'package:second_task_data_usage/presentation/ui/widgets/rounded_btn_widget.dart';
+import 'package:second_task_data_usage/presentation/ui/widgets/title_with_text_btn_widget.dart';
+import 'package:second_task_data_usage/utils/dates_convertor.dart';
 import 'package:uuid/uuid.dart';
 
 class AddTaskScreen extends StatefulWidget {

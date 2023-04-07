@@ -1,5 +1,5 @@
-import 'package:second_task_data_usage/features/tasks/utils/sort_types.dart';
-import 'package:second_task_data_usage/features/tasks/utils/task.dart';
+import 'package:second_task_data_usage/domain/models/sort_types.dart';
+import 'package:second_task_data_usage/domain/models/task.dart';
 
 /// Basic task event.
 abstract class TaskEvent {

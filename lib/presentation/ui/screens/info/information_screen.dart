@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:second_task_data_usage/assets/strings/projects_strings.dart';
 import 'package:second_task_data_usage/assets/text_styles/project_styles.dart';
-import 'package:second_task_data_usage/ui_kit/title_with_text_btn_widget.dart';
-import '../../../ui_kit/rounded_btn_widget.dart';
+import 'package:second_task_data_usage/presentation/ui/widgets/rounded_btn_widget.dart';
+import 'package:second_task_data_usage/presentation/ui/widgets/title_with_text_btn_widget.dart';
 
 class InformationScreen extends StatelessWidget {
   const InformationScreen({Key? key}) : super(key: key);

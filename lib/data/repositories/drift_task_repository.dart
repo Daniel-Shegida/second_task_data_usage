@@ -1,7 +1,7 @@
 import 'package:drift/drift.dart';
-import 'package:second_task_data_usage/features/tasks/db/drift/database.dart';
-import 'package:second_task_data_usage/features/tasks/service/rep/i_task_repository.dart';
-import 'package:second_task_data_usage/features/tasks/utils/task.dart';
+import 'package:second_task_data_usage/data/datasourses/drift/my_database/database.dart';
+import 'package:second_task_data_usage/domain/repositories/i_task_repository.dart';
+import 'package:second_task_data_usage/domain/models/task.dart';
 
 class DriftTaskRepository extends ITaskRepository {
   final database = MyDatabase();
