@@ -12,14 +12,14 @@
 ## структура папок:
 + assets - ресурсы проекта
 + data - слой данных
-++ datasourses - бд проекта
-++ repositories - репозитории проекта
+  + datasourses - бд проекта
+  + repositories - репозитории проекта
 + domain - слой бизнесс логики
-++ blocs - блоки проекта
-++ models - сущности проекта
-++ repositories - интерфейсы проекта
+  + blocs - блоки проекта
+  + models - сущности проекта
+  + repositories - интерфейсы проекта
 + presentation - слой представления
-++ ui - ui проекта
-+++ screens - экраны проекта
-+++ widgets - виджеты проекта 
+  + ui - ui проекта
+    + screens - экраны проекта
+    + widgets - виджеты проекта 
 + utils 
