@@ -218,7 +218,7 @@ class _TasksFloatingButtons extends StatelessWidget {
                       topRight: Radius.circular(25.0.r),
                     ),
                     child: Container(
-                      height: 600,
+                      height: 700.h,
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: Colors.red,
