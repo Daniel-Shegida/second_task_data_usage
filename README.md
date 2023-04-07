@@ -5,7 +5,8 @@
 на данный момент используется `FirestoreTaskRepository`
 
 ## результат
-![65](https://user-images.githubusercontent.com/47796424/230577394-86f8f5bd-c81e-444d-b991-4df15433e977.gif)
+![65](https://user-images.githubusercontent.com/47796424/230577394-86f8f5bd-c81e-444d-b991-4df15433e977.gif) <br>
+Перезагрузка
 ![66](https://user-images.githubusercontent.com/47796424/230579858-46e0ff5c-6d35-43e9-b516-1184b29ced0c.gif)
 
 ## структура папок:
