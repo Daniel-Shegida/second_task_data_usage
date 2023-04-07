@@ -1,16 +1,24 @@
 # second_task_data_usage
 
-Second task. Data usage
+## drift и firebase: 
+в data/repositories есть репозитории `DriftTaskRepository` и `FirestoreTaskRepository` их можно вставить в MyApp -> TaskBloc для проверки каждого из них <br>
+на данный момент используется `FirestoreTaskRepository`
 
-## Getting Started
+## результат
+![65](https://user-images.githubusercontent.com/47796424/230577394-86f8f5bd-c81e-444d-b991-4df15433e977.gif)
+![66](https://user-images.githubusercontent.com/47796424/230579858-46e0ff5c-6d35-43e9-b516-1184b29ced0c.gif)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## структура папок:
++ assets - ресурсы проекта
++ data - слой данных
+++ datasourses - бд проекта
+++ repositories - репозитории проекта
++ domain - слой бизнесс логики
+++ blocs - блоки проекта
+++ models - сущности проекта
+++ repositories - интерфейсы проекта
++ presentation - слой представления
+++ ui - ui проекта
++++ screens - экраны проекта
++++ widgets - виджеты проекта 
++ utils 
