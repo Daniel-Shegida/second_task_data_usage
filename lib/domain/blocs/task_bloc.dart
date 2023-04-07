@@ -1,9 +1,9 @@
 // ignore_for_file: invalid_use_of_visible_for_testing_member
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:second_task_data_usage/domain/blocs/events/task_event.dart';
+import 'package:second_task_data_usage/domain/blocs/states/task_state.dart';
 import 'package:second_task_data_usage/domain/repositories/i_task_repository.dart';
-import 'package:second_task_data_usage/presentation/blocs/events/task_event.dart';
-import 'package:second_task_data_usage/presentation/blocs/states/task_state.dart';
 import 'package:second_task_data_usage/domain/models/sort_types.dart';
 import 'package:second_task_data_usage/domain/models/task.dart';
 

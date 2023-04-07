@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:second_task_data_usage/data/datasourses/firebase/firebase_remote_data_sourse.dart';
 import 'package:second_task_data_usage/data/repositories/firestore_task_repository.dart';
-import 'package:second_task_data_usage/presentation/blocs/task_bloc.dart';
-import 'package:second_task_data_usage/presentation/blocs/events/task_event.dart';
+import 'package:second_task_data_usage/domain/blocs/events/task_event.dart';
+import 'package:second_task_data_usage/domain/blocs/task_bloc.dart';
 import 'package:second_task_data_usage/presentation/ui/screens/info/information_screen.dart';
 import 'package:second_task_data_usage/presentation/ui/screens/tasks/tasks_list_screen.dart';
 
