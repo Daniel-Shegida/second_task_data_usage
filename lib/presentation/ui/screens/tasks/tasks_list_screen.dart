@@ -29,28 +29,32 @@ class TasksScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              BlocBuilder<TaskBloc, TaskState>(builder: (context, state) {
-                return TextTitleWithBtn(
-                  title: ProjectStrings.titleList,
-                  isBtn: state is GetTasksState,
-                  onPressed: () {
-                    context.read<TaskBloc>().add(
-                          FilterEvent(),
-                        );
-                  },
-                );
-              }),
-              BlocBuilder<TaskBloc, TaskState>(builder: (context, state) {
-                if (state is GetTasksState) {
-                  return _TasksListOfTasksWidget(
-                    tasks: state.tasks,
+              BlocBuilder<TaskBloc, TaskState>(
+                builder: (context, state) {
+                  return TextTitleWithBtn(
+                    title: ProjectStrings.titleList,
+                    isBtn: state is GetTasksState,
+                    onPressed: () {
+                      context.read<TaskBloc>().add(
+                            FilterEvent(),
+                          );
+                    },
                   );
-                } else if (state is TasksEmptyState) {
-                  return const _TasksNoTasksWidget();
-                } else {
-                  return const _LoadingWidget();
-                }
-              }),
+                },
+              ),
+              BlocBuilder<TaskBloc, TaskState>(
+                builder: (context, state) {
+                  if (state is GetTasksState) {
+                    return _TasksListOfTasksWidget(
+                      tasks: state.tasks,
+                    );
+                  } else if (state is TasksEmptyState) {
+                    return const _TasksNoTasksWidget();
+                  } else {
+                    return const _LoadingWidget();
+                  }
+                },
+              ),
             ],
           ),
         ),

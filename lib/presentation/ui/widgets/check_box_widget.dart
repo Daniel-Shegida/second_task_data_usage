@@ -5,13 +5,13 @@ import 'package:second_task_data_usage/assets/text_styles/project_styles.dart';
 import 'package:second_task_data_usage/utils/dates_convertor.dart';
 
 class CheckBoxWidget extends StatelessWidget {
-  const CheckBoxWidget(
-      {required this.title,
-      required this.date,
-      required this.value,
-      required this.onChanged,
-      Key? key})
-      : super(key: key);
+  const CheckBoxWidget({
+    required this.title,
+    required this.date,
+    required this.value,
+    required this.onChanged,
+    Key? key,
+  }) : super(key: key);
 
   final String title;
   final DateTime date;
@@ -26,25 +26,30 @@ class CheckBoxWidget extends StatelessWidget {
       checkColor: ProjectColors.iconColor,
       activeColor: ProjectColors.btnColor,
       checkboxShape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(6.r),
-          ),
-          side: BorderSide(color: ProjectColors.borderColor, width: 2.r)),
+        borderRadius: BorderRadius.all(
+          Radius.circular(6.r),
+        ),
+        side: BorderSide(color: ProjectColors.borderColor, width: 2.r),
+      ),
       title: Opacity(
         opacity: value ? 0.3 : 1,
-        child: Text(title,
-            style: value
-                ? ProjectStyles.semiBoldGrey15OpenSans
-                    .copyWith(decoration: TextDecoration.lineThrough)
-                : ProjectStyles.semiBoldGrey15OpenSans),
+        child: Text(
+          title,
+          style: value
+              ? ProjectStyles.semiBoldGrey15OpenSans
+                  .copyWith(decoration: TextDecoration.lineThrough)
+              : ProjectStyles.semiBoldGrey15OpenSans,
+        ),
       ),
       subtitle: Opacity(
         opacity: value ? 0.3 : 1,
-        child: Text(DatesConvertor.convertDateToMinuteYear(date),
-            style: value
-                ? ProjectStyles.italicActive13OpenSans
-                    .copyWith(decoration: TextDecoration.lineThrough)
-                : ProjectStyles.italicActive13OpenSans),
+        child: Text(
+          DatesConvertor.convertDateToMinuteYear(date),
+          style: value
+              ? ProjectStyles.italicActive13OpenSans
+                  .copyWith(decoration: TextDecoration.lineThrough)
+              : ProjectStyles.italicActive13OpenSans,
+        ),
       ),
       value: value,
       onChanged: onChanged,

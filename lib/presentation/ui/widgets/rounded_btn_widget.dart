@@ -4,9 +4,11 @@ import 'package:second_task_data_usage/assets/colors/project_colors.dart';
 import 'package:second_task_data_usage/assets/text_styles/project_styles.dart';
 
 class RoundedBtnWidget extends StatelessWidget {
-  const RoundedBtnWidget(
-      {required this.bntText, required this.onPressed, Key? key})
-      : super(key: key);
+  const RoundedBtnWidget({
+    required this.bntText,
+    required this.onPressed,
+    Key? key,
+  }) : super(key: key);
   final String bntText;
   final VoidCallback onPressed;
 

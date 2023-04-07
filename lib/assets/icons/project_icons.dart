@@ -11,8 +11,5 @@ abstract class ProjectIcons {
 
   static const String iBack = 'assets/icons/back_icon.svg';
 
-  ///todo delete one of this
-  static const String iArrow1 = 'assets/icons/arrow 1.svg';
-
   static const String iArrow2 = 'assets/icons/rrr.png';
 }

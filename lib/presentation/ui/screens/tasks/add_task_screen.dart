@@ -101,7 +101,9 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
 
   void _changeTimeByDialog() async {
     _currentTime = (await showTimePicker(
-            context: context, initialTime: TimeOfDay.now())) ??
+          context: context,
+          initialTime: TimeOfDay.now(),
+        )) ??
         _currentTime;
     setState(() {});
   }
@@ -135,25 +137,29 @@ class _TextInputRawWidget extends StatelessWidget {
           width: 11.w,
         ),
         Expanded(
-            child: TextFormField(
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Please enter some text';
-            }
-            return null;
-          },
-          controller: textEditingController,
-          decoration: const InputDecoration(hintText: ProjectStrings.fishShort),
-        )),
+          child: TextFormField(
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter some text';
+              }
+              return null;
+            },
+            controller: textEditingController,
+            decoration:
+                const InputDecoration(hintText: ProjectStrings.fishShort),
+          ),
+        ),
       ],
     );
   }
 }
 
 class _TimeInputRawWidget extends StatelessWidget {
-  const _TimeInputRawWidget(
-      {required this.currentTime, required this.onTap, Key? key})
-      : super(key: key);
+  const _TimeInputRawWidget({
+    required this.currentTime,
+    required this.onTap,
+    Key? key,
+  }) : super(key: key);
   final TimeOfDay currentTime;
   final VoidCallback onTap;
 
@@ -180,9 +186,11 @@ class _TimeInputRawWidget extends StatelessWidget {
 }
 
 class _DateInputRawWidget extends StatelessWidget {
-  const _DateInputRawWidget(
-      {required this.currentDate, required this.onTap, Key? key})
-      : super(key: key);
+  const _DateInputRawWidget({
+    required this.currentDate,
+    required this.onTap,
+    Key? key,
+  }) : super(key: key);
   final DateTime currentDate;
   final VoidCallback onTap;
 

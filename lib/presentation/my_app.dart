@@ -18,7 +18,9 @@ class MyApp extends StatelessWidget {
         repository: FirestoreTaskRepository(
           dataSource: FirebaseRemoteDataSource(),
         ),
-      )..add(GetTasksEvent()),
+      )..add(
+          GetTasksEvent(),
+        ),
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
         useInheritedMediaQuery: true,

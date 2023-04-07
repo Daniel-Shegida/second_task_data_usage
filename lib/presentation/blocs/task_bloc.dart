@@ -27,15 +27,18 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
       _sortListBySortType(_currentType, _uncompletedTasks);
       repository.saveTask(event.task);
 
-      emit(GetTasksState(
-        tasks: _showFiltered(),
-      ));
+      emit(
+        GetTasksState(
+          tasks: _showFiltered(),
+        ),
+      );
     });
 
     on<ChangeCompletionTaskEvent>((event, emit) async {
       _changeCompleteness(event.task);
       repository.changeCompletenessOfTask(
-          event.task.copyWith(isCompleted: !event.task.isCompleted));
+        event.task.copyWith(isCompleted: !event.task.isCompleted),
+      );
       _showTasks();
     });
 
@@ -59,9 +62,11 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
 
   void _showTasks() {
     if (_completedTasks.isNotEmpty || _uncompletedTasks.isNotEmpty) {
-      emit(GetTasksState(
-        tasks: _showFiltered(),
-      ));
+      emit(
+        GetTasksState(
+          tasks: _showFiltered(),
+        ),
+      );
     } else {
       emit(
         TasksEmptyState(),
@@ -93,15 +98,19 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
 
   void _changeCompleteness(Task task) {
     if (task.isCompleted) {
-      _uncompletedTasks.add(task.copyWith(
-        isCompleted: false,
-      ));
+      _uncompletedTasks.add(
+        task.copyWith(
+          isCompleted: false,
+        ),
+      );
       _sortListBySortType(_currentType, _uncompletedTasks);
       _deleteTaskFromList(task.id, _completedTasks);
     } else {
-      _completedTasks.add(task.copyWith(
-        isCompleted: true,
-      ));
+      _completedTasks.add(
+        task.copyWith(
+          isCompleted: true,
+        ),
+      );
       _sortListBySortType(_currentType, _completedTasks);
       _deleteTaskFromList(task.id, _uncompletedTasks);
     }

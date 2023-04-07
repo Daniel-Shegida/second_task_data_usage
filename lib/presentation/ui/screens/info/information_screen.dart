@@ -30,9 +30,12 @@ class InformationScreen extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              RoundedBtnWidget(bntText: ProjectStrings.btnInfo, onPressed: () {
-                Navigator.pop(context);
-              },),
+              RoundedBtnWidget(
+                bntText: ProjectStrings.btnInfo,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
             ],
           ),
         ),

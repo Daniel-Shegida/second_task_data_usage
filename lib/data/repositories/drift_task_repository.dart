@@ -11,7 +11,11 @@ class DriftTaskRepository extends ITaskRepository {
     List<DbTaskData> dbTasks = await database.getOrderedSortedDbTaskData(true);
     Iterable<Task> tasks = dbTasks.map(
       (e) => Task(
-          id: e.id, name: e.title, date: e.date, isCompleted: e.isCompleted),
+        id: e.id,
+        name: e.title,
+        date: e.date,
+        isCompleted: e.isCompleted,
+      ),
     );
     return tasks.toList();
   }
@@ -22,7 +26,11 @@ class DriftTaskRepository extends ITaskRepository {
 
     Iterable<Task> tasks = dbTasks.map(
       (e) => Task(
-          id: e.id, name: e.title, date: e.date, isCompleted: e.isCompleted),
+        id: e.id,
+        name: e.title,
+        date: e.date,
+        isCompleted: e.isCompleted,
+      ),
     );
     return tasks.toList();
   }

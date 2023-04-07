@@ -7,5 +7,4 @@ enum SortTypes {
   const SortTypes(this.sortIndex);
 
   final int sortIndex;
-
 }

@@ -4,11 +4,12 @@ class Task {
   final DateTime date;
   bool isCompleted;
 
-  Task(
-      {required this.id,
-      required this.name,
-      required this.date,
-      this.isCompleted = false});
+  Task({
+    required this.id,
+    required this.name,
+    required this.date,
+    this.isCompleted = false,
+  });
 
   Task copyWith({
     String? id,
@@ -25,15 +26,16 @@ class Task {
   }
 
   Map<String, Object?> toJson() => {
-    'id' : id,
+        'id': id,
         'name': name,
         'date': date,
         'isCompleted': isCompleted,
       };
 
   static Task fromJson(Map<String, dynamic> json) => Task(
-      id: json['id'],
-      name: json['name'],
-      date: json['date'].toDate(),
-      isCompleted: json['isCompleted']);
+        id: json['id'],
+        name: json['name'],
+        date: json['date'].toDate(),
+        isCompleted: json['isCompleted'],
+      );
 }

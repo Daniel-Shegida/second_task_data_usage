@@ -7,7 +7,6 @@ import 'package:path/path.dart' as p;
 
 part 'database.g.dart';
 
-
 class DbTask extends Table {
   TextColumn get id => text()();
 
@@ -17,7 +16,6 @@ class DbTask extends Table {
 
   BoolColumn get isCompleted => boolean()();
 }
-
 
 @DriftDatabase(tables: [DbTask])
 class MyDatabase extends _$MyDatabase {
@@ -30,9 +28,7 @@ class MyDatabase extends _$MyDatabase {
         .get();
   }
 
-
-  Future editDbTask(
-      String taskId, DbTaskCompanion taskCompanion) {
+  Future editDbTask(String taskId, DbTaskCompanion taskCompanion) {
     return (update(dbTask)..where((t) => t.id.equals(taskId))).write(
       taskCompanion,
     );
@@ -46,16 +42,16 @@ class MyDatabase extends _$MyDatabase {
     return into(dbTask).insert(entry);
   }
 
-
   @override
   int get schemaVersion => 1;
 }
 
 LazyDatabase _openConnection() {
   return LazyDatabase(() async {
-
     final dbFolder = await getApplicationDocumentsDirectory();
-    final file = File(p.join(dbFolder.path, 'db.sqlite'));
+    final file = File(
+      p.join(dbFolder.path, 'db.sqlite'),
+    );
     return NativeDatabase.createInBackground(file);
   });
 }
