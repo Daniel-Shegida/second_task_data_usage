@@ -20,7 +20,7 @@ class FirebaseRemoteDataSource extends IFirebaseRemoteDataSource {
   Future<List<Task>> getTasks({required bool isCompleted}) async {
     final taskSnapshot = await firebaseTaskCollection
         .orderBy('name')
-        .where('isCompleted', isEqualTo: true)
+        .where('isCompleted', isEqualTo: isCompleted)
         .get();
     return taskSnapshot.docs
         .map(
