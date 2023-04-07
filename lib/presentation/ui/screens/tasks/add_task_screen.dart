@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:routemaster/routemaster.dart';
 import 'package:second_task_data_usage/assets/strings/projects_strings.dart';
 import 'package:second_task_data_usage/assets/text_styles/project_styles.dart';
 import 'package:second_task_data_usage/domain/blocs/events/task_event.dart';
@@ -90,7 +91,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                           ),
                         ),
                       );
-                  Navigator.pop(context);
+                  Routemaster.of(context).pop();
                 }
               },
             ),

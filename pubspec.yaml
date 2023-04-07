@@ -24,6 +24,7 @@ dependencies:
   path: 1.8.2
   firebase_core: ^2.9.0
   cloud_firestore: ^4.5.0
+  routemaster: ^1.0.1
 
 dev_dependencies:
   flutter_test:

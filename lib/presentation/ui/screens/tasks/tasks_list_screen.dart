@@ -14,6 +14,7 @@ import 'package:second_task_data_usage/domain/models/task.dart';
 import 'package:second_task_data_usage/presentation/ui/screens/tasks/add_task_screen.dart';
 import 'package:second_task_data_usage/presentation/ui/widgets/check_box_widget.dart';
 import 'package:second_task_data_usage/presentation/ui/widgets/title_with_text_btn_widget.dart';
+import 'package:second_task_data_usage/utils/navigation_helper.dart';
 
 /// экран отображения списка задач
 class TasksScreen extends StatelessWidget {
@@ -193,7 +194,7 @@ class _TasksFloatingButtons extends StatelessWidget {
           FloatingActionButton(
             heroTag: "noHERO1",
             onPressed: () {
-              Navigator.pushNamed(context, '/infoScreen');
+              NavigationHelper().moveToInfoScreen(context);
             },
             backgroundColor: ProjectColors.btnColor,
             child: SvgIcon(
