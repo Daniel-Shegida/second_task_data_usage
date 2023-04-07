@@ -4,6 +4,7 @@ import 'package:second_task_data_usage/assets/colors/project_colors.dart';
 import 'package:second_task_data_usage/assets/text_styles/project_styles.dart';
 import 'package:second_task_data_usage/utils/dates_convertor.dart';
 
+/// виджет карточки задач
 class CheckBoxWidget extends StatelessWidget {
   const CheckBoxWidget({
     required this.title,

@@ -1,7 +1,7 @@
 import 'package:second_task_data_usage/domain/models/task.dart';
 
-abstract class ITaskRepository{
-
+/// интерфес репозитория задач
+abstract class ITaskRepository {
   void saveTask(Task task);
 
   void changeCompletenessOfTask(Task task);
@@ -9,5 +9,4 @@ abstract class ITaskRepository{
   Future<List<Task>> getCompletedTasks();
 
   Future<List<Task>> getUncompletedTasks();
-
 }

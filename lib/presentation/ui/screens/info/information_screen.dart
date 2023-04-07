@@ -5,6 +5,7 @@ import 'package:second_task_data_usage/assets/text_styles/project_styles.dart';
 import 'package:second_task_data_usage/presentation/ui/widgets/rounded_btn_widget.dart';
 import 'package:second_task_data_usage/presentation/ui/widgets/title_with_text_btn_widget.dart';
 
+/// экран информационного рыбьего текста
 class InformationScreen extends StatelessWidget {
   const InformationScreen({Key? key}) : super(key: key);
 

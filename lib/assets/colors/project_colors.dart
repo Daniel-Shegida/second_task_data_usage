@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// цветовые ресурсы проекта
 abstract class ProjectColors {
   static const Color textColorPrimary = _black;
 
@@ -21,7 +22,7 @@ abstract class ProjectColors {
 
   static const Color inputBackgroundColor = _greyTr;
 
-  /// color scheme
+  /// Палитра проекта
   static const Color _darkGrey = Color.fromRGBO(249, 249, 249, 0.94);
 
   static const Color _brightGrey = Color.fromRGBO(247, 248, 250, 1);

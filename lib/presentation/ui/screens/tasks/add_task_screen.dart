@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:second_task_data_usage/assets/colors/project_colors.dart';
 import 'package:second_task_data_usage/assets/strings/projects_strings.dart';
 import 'package:second_task_data_usage/assets/text_styles/project_styles.dart';
 import 'package:second_task_data_usage/presentation/blocs/task_bloc.dart';
 import 'package:second_task_data_usage/presentation/blocs/events/task_event.dart';
 import 'package:second_task_data_usage/domain/models/task.dart';
 import 'package:second_task_data_usage/presentation/ui/widgets/cupertino_like_app_bar.dart';
+import 'package:second_task_data_usage/presentation/ui/widgets/date_info_widget.dart';
 import 'package:second_task_data_usage/presentation/ui/widgets/rounded_btn_widget.dart';
+import 'package:second_task_data_usage/presentation/ui/widgets/time_info_widget.dart';
 import 'package:second_task_data_usage/presentation/ui/widgets/title_with_text_btn_widget.dart';
-import 'package:second_task_data_usage/utils/dates_convertor.dart';
 import 'package:uuid/uuid.dart';
 
+/// экран добавления новых задач
 class AddTaskScreen extends StatefulWidget {
   const AddTaskScreen({Key? key}) : super(key: key);
 
@@ -120,6 +121,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   }
 }
 
+/// виджет колонки набора текста
 class _TextInputRawWidget extends StatelessWidget {
   const _TextInputRawWidget({required this.textEditingController, Key? key})
       : super(key: key);
@@ -154,6 +156,7 @@ class _TextInputRawWidget extends StatelessWidget {
   }
 }
 
+/// виджет колонки выбора времени
 class _TimeInputRawWidget extends StatelessWidget {
   const _TimeInputRawWidget({
     required this.currentTime,
@@ -185,6 +188,7 @@ class _TimeInputRawWidget extends StatelessWidget {
   }
 }
 
+/// виджет колонки выбора даты
 class _DateInputRawWidget extends StatelessWidget {
   const _DateInputRawWidget({
     required this.currentDate,
@@ -212,44 +216,6 @@ class _DateInputRawWidget extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class TimeInfoWidget extends StatelessWidget {
-  const TimeInfoWidget({required this.time, Key? key}) : super(key: key);
-  final TimeOfDay time;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: ProjectColors.inputBackgroundColor,
-      child: Padding(
-        padding: EdgeInsets.all(8.0.h),
-        child: Text(
-          DatesConvertor.convertTimeOfDay(time),
-          style: ProjectStyles.regularBlack22OpenSans,
-        ),
-      ),
-    );
-  }
-}
-
-class DateInfoWidget extends StatelessWidget {
-  const DateInfoWidget({required this.date, Key? key}) : super(key: key);
-  final DateTime date;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: ProjectColors.inputBackgroundColor,
-      child: Padding(
-        padding: EdgeInsets.all(8.0.h),
-        child: Text(
-          DatesConvertor.convertDateTimeToDayYear(date),
-          style: ProjectStyles.regularBlack22OpenSans,
-        ),
-      ),
     );
   }
 }

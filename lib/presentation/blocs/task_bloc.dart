@@ -7,6 +7,7 @@ import 'package:second_task_data_usage/presentation/blocs/states/task_state.dart
 import 'package:second_task_data_usage/domain/models/sort_types.dart';
 import 'package:second_task_data_usage/domain/models/task.dart';
 
+/// блок задач, содержащий бизнес логику сортировки и работы с репозиториями
 class TaskBloc extends Bloc<TaskEvent, TaskState> {
   final ITaskRepository repository;
 

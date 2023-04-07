@@ -6,6 +6,7 @@ import 'package:second_task_data_usage/assets/icons/project_icons.dart';
 import 'package:second_task_data_usage/assets/strings/projects_strings.dart';
 import 'package:second_task_data_usage/assets/text_styles/project_styles.dart';
 
+/// виджет appbar с стилем ios
 class CupertinoLikeAppbar extends StatelessWidget
     implements PreferredSizeWidget {
   const CupertinoLikeAppbar({Key? key}) : super(key: key);
