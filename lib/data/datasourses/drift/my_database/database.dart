@@ -4,18 +4,10 @@ import 'dart:io';
 import 'package:drift/native.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
+import 'package:second_task_data_usage/data/datasourses/drift/models/dbtask.dart';
 
 part 'database.g.dart';
 
-class DbTask extends Table {
-  TextColumn get id => text()();
-
-  TextColumn get title => text()();
-
-  DateTimeColumn get date => dateTime()();
-
-  BoolColumn get isCompleted => boolean()();
-}
 
 /// локальная база данных с таблицей задач
 @DriftDatabase(tables: [DbTask])
