@@ -33,4 +33,4 @@
 + utils 
 
 ## Lints
-а еще были добавлены `require_trailing_commas` так что с запятыми все нормально
+а еще добавлено `require_trailing_commas` так что с запятыми все нормально
