@@ -11,6 +11,7 @@ import 'package:second_task_data_usage/domain/blocs/states/task_state.dart';
 import 'package:second_task_data_usage/domain/blocs/task_bloc.dart';
 import 'package:second_task_data_usage/domain/models/sort_types.dart';
 import 'package:second_task_data_usage/domain/models/task.dart';
+import 'package:second_task_data_usage/presentation/ui/animations/telegram_like_swipe_animation.dart';
 import 'package:second_task_data_usage/presentation/ui/screens/tasks/add_task_screen.dart';
 import 'package:second_task_data_usage/presentation/ui/widgets/check_box_widget.dart';
 import 'package:second_task_data_usage/presentation/ui/widgets/title_with_text_btn_widget.dart';
@@ -136,17 +137,28 @@ class _TasksListOfTasksWidget extends StatelessWidget {
       child: ListView.builder(
         itemCount: tasks.length,
         itemBuilder: (context, index) {
-          return CheckBoxWidget(
-            title: tasks[index].name,
-            date: tasks[index].date,
-            value: tasks[index].isCompleted,
-            onChanged: (bool? value) {
+          return TelegramLikeSwipeAnimation(
+            threshold: 60.0,
+            isCompleted: tasks[index].isCompleted,
+            onSwipe: () {
               context.read<TaskBloc>().add(
                     ChangeCompletionTaskEvent(
                       task: tasks[index],
                     ),
                   );
             },
+            child: CheckBoxWidget(
+              title: tasks[index].name,
+              date: tasks[index].date,
+              value: tasks[index].isCompleted,
+              onChanged: (bool? value) {
+                context.read<TaskBloc>().add(
+                      ChangeCompletionTaskEvent(
+                        task: tasks[index],
+                      ),
+                    );
+              },
+            ),
           );
         },
       ),
@@ -173,7 +185,7 @@ class _TasksNoTasksWidget extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.only(left: 52.w, top: 18.h),
-          child: Image.asset(ProjectIcons.iArrow2),
+          child: Image.asset(ProjectIcons.iArrow),
         ),
       ],
     );

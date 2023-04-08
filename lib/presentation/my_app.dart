@@ -36,11 +36,6 @@ class MyApp extends StatelessWidget {
               routesBuilder: (_) => routes,
             ),
             routeInformationParser: const RoutemasterParser(),
-            // initialRoute: '/',
-            // routes: {
-            //   '/': (context) => const TasksScreen(),
-            //   '/infoScreen': (context) => const InformationScreen(),
-            // },
           );
         },
       ),

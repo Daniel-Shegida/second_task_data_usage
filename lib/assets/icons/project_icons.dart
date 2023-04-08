@@ -12,5 +12,9 @@ abstract class ProjectIcons {
 
   static const String iBack = 'assets/icons/back_icon.svg';
 
-  static const String iArrow2 = 'assets/icons/rrr.png';
+  static const String iCross = 'assets/icons/cross.svg';
+
+  static const String iOk = 'assets/icons/ok.svg';
+
+  static const String iArrow = 'assets/icons/THE_ARROW.png';
 }

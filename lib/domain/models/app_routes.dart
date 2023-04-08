@@ -8,7 +8,7 @@ import 'package:second_task_data_usage/presentation/ui/screens/tasks/tasks_list_
 final routes = RouteMap(
   routes: {
     '/': (_) => const Redirect(AppRoutePaths.taskListScreen),
-    AppRoutePaths.taskListScreen: (_) => const MaterialPage<TasksScreen>(
+    AppRoutePaths.taskListScreen: (_) =>  const MaterialPage<TasksScreen>(
           child: TasksScreen(),
         ),
     '${AppRoutePaths.taskListScreen}${AppRoutePaths.infoScreen}': (_) =>
