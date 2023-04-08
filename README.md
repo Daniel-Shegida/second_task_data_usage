@@ -14,7 +14,9 @@
 Перезагрузка  <br>
 ![66](https://user-images.githubusercontent.com/47796424/230579858-46e0ff5c-6d35-43e9-b516-1184b29ced0c.gif)<br>
 дополнительные анимации  <br>
-![68](https://user-images.githubusercontent.com/47796424/230740213-206f518c-45e0-4c30-82aa-0586f9199d6b.gif)
+![68](https://user-images.githubusercontent.com/47796424/230740213-206f518c-45e0-4c30-82aa-0586f9199d6b.gif)<br>
+правки <br>
+![70](https://user-images.githubusercontent.com/47796424/230740851-b082e515-8252-44c6-8978-690105a1ffe7.gif)
 
 
 ## Структура папок:
