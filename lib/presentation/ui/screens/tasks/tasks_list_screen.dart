@@ -34,15 +34,24 @@ class TasksScreen extends StatelessWidget {
             children: [
               BlocBuilder<TaskBloc, TaskState>(
                 builder: (context, state) {
-                  return TextTitleWithBtn(
+                  if (state is GetTasksState) {
+                    return TextTitleWithBtn(
+                      title: ProjectStrings.titleList,
+                      isBtn: true,
+                      value: state.isShowingUncomplete,
+                      onPressed: () {
+                        context.read<TaskBloc>().add(
+                          FilterEvent(),
+                        );
+                      },
+                    );
+                  }
+                  else {
+                    return const TextTitleWithBtn(
                     title: ProjectStrings.titleList,
-                    isBtn: state is GetTasksState,
-                    onPressed: () {
-                      context.read<TaskBloc>().add(
-                            FilterEvent(),
-                          );
-                    },
+                    isBtn: false,
                   );
+                  }
                 },
               ),
               BlocBuilder<TaskBloc, TaskState>(

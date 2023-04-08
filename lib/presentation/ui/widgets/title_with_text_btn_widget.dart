@@ -37,7 +37,7 @@ class TextTitleWithBtn extends StatelessWidget {
               child: TextButton(
                 onPressed: onPressed,
                 child: Text(
-                  value ? ProjectStrings.btnShow : ProjectStrings.btnHide,
+                  value ? ProjectStrings.btnHide : ProjectStrings.btnShow,
                   style: ProjectStyles.semiBoldActive13OpenSans,
                 ),
               ),

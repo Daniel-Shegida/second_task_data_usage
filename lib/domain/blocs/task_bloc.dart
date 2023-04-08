@@ -11,7 +11,7 @@ import 'package:second_task_data_usage/domain/models/task.dart';
 class TaskBloc extends Bloc<TaskEvent, TaskState> {
   final ITaskRepository repository;
 
-  bool _isShowingCompleted = true;
+  bool _isShowingUncompleted = true;
   SortTypes _currentType = SortTypes.azSort;
   List<Task> _completedTasks = [];
   List<Task> _uncompletedTasks = [];
@@ -31,6 +31,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
       emit(
         GetTasksState(
           tasks: _showFiltered(),
+          isShowingUncomplete: _isShowingUncompleted,
         ),
       );
     });
@@ -44,11 +45,12 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
     });
 
     on<FilterEvent>((event, emit) async {
-      _isShowingCompleted = !_isShowingCompleted;
+      _isShowingUncompleted = !_isShowingUncompleted;
 
       emit(
         GetTasksState(
           tasks: _showFiltered(),
+          isShowingUncomplete: _isShowingUncompleted,
         ),
       );
     });
@@ -66,6 +68,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
       emit(
         GetTasksState(
           tasks: _showFiltered(),
+          isShowingUncomplete: _isShowingUncompleted,
         ),
       );
     } else {
@@ -76,7 +79,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
   }
 
   List<Task> _showFiltered() {
-    if (_isShowingCompleted) {
+    if (_isShowingUncompleted) {
       return _uncompletedTasks + _completedTasks;
     } else {
       return _uncompletedTasks;
