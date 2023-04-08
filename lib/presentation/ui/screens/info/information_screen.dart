@@ -28,9 +28,7 @@ class InformationScreen extends StatelessWidget {
                   style: ProjectStyles.semiBoldGrey15OpenSans,
                 ),
               ),
-              Expanded(
-                child: Container(),
-              ),
+              const Spacer(),
               RoundedBtnWidget(
                 bntText: ProjectStrings.btnInfo,
                 onPressed: () {
